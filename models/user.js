@@ -25,9 +25,9 @@ const OwnerSchema = new Schema({
    canRemoveUsers: { type: Boolean, default: true },
 })
 
-const UserModel = model('User', UserSchema);
-const AdminModel = model('Admin', AdminSchema);
-const OwnerModel = model('Owner', OwnerSchema);
+const UserModel = mongoose.model('User', UserSchema);
+const AdminModel = mongoose.model('Admin', AdminSchema);
+const OwnerModel = mongoose.model('Owner', OwnerSchema);
 
 module.exports = {
     UserModel,
