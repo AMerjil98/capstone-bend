@@ -37,7 +37,6 @@ app.post('/register', async (req, res) => {
                 username,
                 password:bcrypt.hashSync(password, salt),
                 roles: 'User',
-                // comments: []
             });
             res.json(userDoc);
         } catch (e) {

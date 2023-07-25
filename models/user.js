@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 const {Schema, model} = mongoose;
 
-const CommentSchema = new Schema({
-    postId: { type: Schema.Types.ObjectId, ref: 'Post', required: true },
-    content: { type: String, required: true },
-})
-
 const UserSchema = new Schema({
     username: {type: String, required: true, min: 4, unique: true},
     password: {type: String, required: true},
@@ -14,15 +9,30 @@ const UserSchema = new Schema({
         enum: ["User", "Admin", "Owner"],
         default: 'User',
     },
-    // comments: [CommentSchema],
 });
 
 const AdminSchema = new Schema({
-    deletedPosts: [{ type: Schema.Types.ObjectId, ref: 'Post'}],
+    username: {type: String, required: true, min: 4, unique: true},
+    password: {type: String, required: true},
+    role: {
+        type: String, 
+        enum: ["User", "Admin", "Owner"],
+        default: 'Admin',
+    },
+    canPost: { type: Boolean, default: true },
 });
 
 const OwnerSchema = new Schema({
-   canRemoveUsers: { type: Boolean, default: true },
+    username: {type: String, required: true, min: 4, unique: true},
+    password: {type: String, required: true},
+    role: {
+        type: String, 
+        enum: ["User", "Admin", "Owner"],
+        default: 'Owner',
+    },
+    canPost: { type: Boolean, default: true },
+    deletedPosts: [{ type: Schema.Types.ObjectId, ref: 'Post'}],
+    canRemoveUsers: { type: Boolean, default: true },
 })
 
 const UserModel = mongoose.model('User', UserSchema);
