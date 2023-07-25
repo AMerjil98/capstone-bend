@@ -14,7 +14,7 @@ const UserSchema = new Schema({
         enum: ["User", "Admin", "Owner"],
         default: 'User',
     },
-    comments: [CommentSchema],
+    // comments: [CommentSchema],
 });
 
 const AdminSchema = new Schema({
