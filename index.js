@@ -15,7 +15,7 @@ const Post = require ('./models/post.js');
 const salt = bcrypt.genSaltSync(10);
 const secret = 'asdf1234'
 
-app.use(cors({credentials:true,origin:'https://64bc9183a6f48954de4be449--mellow-longma-401818.netlify.app'}));
+app.use(cors({credentials:true,origin:'https://64bf284be9b9650cc352cd9d--profound-strudel-490389.netlify.app'}));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(pathModule.join(__dirname, 'uploads')));
