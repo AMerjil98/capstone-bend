@@ -5,7 +5,7 @@ const Post = require('./models/post.js');
 const app = express();
 
 app.use(cors({
-  origin:'http://localhost:3000'
+  origin:'https://vidyanews-fend-c30dfcc56340.herokuapp.com/'
 }));
 app.use(express.json());
 
