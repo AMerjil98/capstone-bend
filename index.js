@@ -3,7 +3,6 @@ const cors = require('cors');
 const mongoose = require("mongoose");
 const Post = require('./models/Post');
 const app = express();
-const fs = require('fs');
 
 app.use(cors({
   origin:'http://localhost:3000'
